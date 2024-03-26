@@ -67,6 +67,7 @@
 // export default Dashboard
 import React, { useState } from 'react'
 import { View, Image, Text, TouchableOpacity } from 'react-native'
+import { More, Service } from './Service'
 
 const Dashboard = ({ navigation }) => {
     const [show, setShow] = useState(false)
@@ -90,6 +91,19 @@ const Dashboard = ({ navigation }) => {
     const handleclick = (name) => {
         setActive(name)
     }
+
+    // const data = {
+    //     service: <Service/>,
+    //     more:<More/>
+
+    // }
+    const renderContent = () => {
+        if (active === "Service") {
+            return <Service />;
+        } else if (active === "More") {
+            return <More />;
+        }
+    };
     
 
     return (
@@ -125,12 +139,36 @@ const Dashboard = ({ navigation }) => {
             <View className="mt-11 flex flex-row w-full justify-between px-11">
                 {
                     Tab.map((tab, i) => (
-                        <TouchableOpacity onPress={() => handleclick(tab.name)} key={i} className={`${tab.name === active ? "border-b-2" : ""}`}><Text className="text-xl">{tab.name}</Text></TouchableOpacity>
+                        <TouchableOpacity onPress={() => handleclick(tab.name)} className={`${tab.name === active ? "border-b-2" : ""}`}><Text className="text-xl">{tab.name}</Text></TouchableOpacity>
                     ))
                 }
             </View>
             <View>
-
+                {renderContent()}
+            </View>
+            <View className="flex flex-col">
+                <View className="flex flex-row w-full justify-between items-center ">
+                    <Text className="font-bold text-xl">Transaction</Text>
+                    <Text className="text-[#0000FF] uppercase">See all</Text>
+                </View>
+                {/* <View>
+                    {
+                        transaction.map((transact, i)=>(
+                            <View className="flex flex-row w-full justify-between">
+                                <View>
+                                    <Image source={require(transact.icon)}/>
+                                    <View className="flex flex-col gap-1">
+                                        <Text>{transact.title}</Text>
+                                        <Text>{transact.desc}</Text>
+                                    </View>
+                                </View>
+                                <View>
+                                    <Text>{transact.amount}</Text>
+                                </View>
+                            </View>
+                        ))
+                    }
+                </View> */}
             </View>
         </View>
     )
