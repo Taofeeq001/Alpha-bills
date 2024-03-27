@@ -6,6 +6,7 @@ import Register from "./components/Register";
 import { SafeAreaView } from "react-native";
 import Login from "./components/Login";
 import Dashboard from "./components/Dashboard";
+import Wallet from "./components/Wallet";
 const Stack = createStackNavigator();
 
 export default function App() {
@@ -18,6 +19,7 @@ export default function App() {
           <Stack.Screen name="Register" component={Register} options={{ headerShown: false }} />
           <Stack.Screen name="Login" component={Login} options={{ headerShown: false }} />
           <Stack.Screen name="Dashboard" component={Dashboard} options={{ headerShown: false }} />
+          <Stack.Screen name="Wallet" component={Wallet} options={{ headerShown: false }} />
         </Stack.Navigator>
       </NavigationContainer>
     </SafeAreaView>
